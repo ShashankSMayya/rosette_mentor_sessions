@@ -13,7 +13,7 @@ class CommentsScreen extends StatelessWidget implements AutoRouteWrapper {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Comments'),
+        title: const Text('asdffffd'),
       ),
       body: Column(
         children: [
