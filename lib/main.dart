@@ -1,5 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_practice/core/api/api_client.dart';
+import 'package:test_practice/core/api/api_constants.dart';
 import 'package:test_practice/presentation/cubits/auth/auth_cubit.dart';
 import 'package:test_practice/presentation/routes/app_router.dart';
 
@@ -19,10 +22,18 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => AuthCubit()..checkAuth(),
-      child: MaterialApp.router(
-        routerConfig: _appRouter.config(),
+    return RepositoryProvider(
+      create: (context) =>
+          ApiClient(dio: Dio(BaseOptions(baseUrl: ApiConstants.baseUrl))),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => AuthCubit()..checkAuth(),
+          ),
+        ],
+        child: MaterialApp.router(
+          routerConfig: _appRouter.config(),
+        ),
       ),
     );
   }

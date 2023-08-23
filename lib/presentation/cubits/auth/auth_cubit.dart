@@ -9,7 +9,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   void checkAuth() async {
     emit(AuthLoading());
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 100));
     emit(
       Authenticated(
           user: User(

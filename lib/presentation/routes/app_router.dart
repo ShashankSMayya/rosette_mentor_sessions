@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 
+import '../pages/comments_screen.dart';
 import '../pages/login/login_screen.dart';
 import '../pages/test_page.dart';
 
@@ -13,10 +14,12 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/',
           page: OnboardingRoute.page,
-
         ),
         AutoRoute(
           page: LoginRoute.page,
+        ),
+        AutoRoute(
+          page: CommentsRoute.page,
         ),
       ];
 }

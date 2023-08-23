@@ -30,7 +30,7 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      context.read<AuthCubit>().login(username: 'John');
+                      context.pushRoute(const CommentsRoute());
                     },
                     child: Text("Test"),
                   ),

@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    CommentsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const CommentsScreen()),
+      );
+    },
     LoginRoute.name: (routeData) {
       final args = routeData.argsAs<LoginRouteArgs>();
       return AutoRoutePage<String?>(
@@ -32,6 +38,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [CommentsScreen]
+class CommentsRoute extends PageRouteInfo<void> {
+  const CommentsRoute({List<PageRouteInfo>? children})
+      : super(
+          CommentsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommentsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
