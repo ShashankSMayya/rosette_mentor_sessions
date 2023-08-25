@@ -22,18 +22,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) =>
-          ApiClient(dio: Dio(BaseOptions(baseUrl: ApiConstants.baseUrl))),
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (_) => AuthCubit()..checkAuth(),
-          ),
-        ],
-        child: MaterialApp.router(
-          routerConfig: _appRouter.config(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => AuthCubit()..checkAuth(),
         ),
+      ],
+      child: MaterialApp.router(
+        routerConfig: _appRouter.config(),
       ),
     );
   }

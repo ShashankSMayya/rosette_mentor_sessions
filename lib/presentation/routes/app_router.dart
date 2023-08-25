@@ -3,7 +3,8 @@ import 'package:flutter/foundation.dart';
 
 import '../pages/comments_screen.dart';
 import '../pages/login/login_screen.dart';
-import '../pages/test_page.dart';
+import '../pages/onboarding/onboarding_screen.dart';
+
 
 part 'app_router.gr.dart';
 

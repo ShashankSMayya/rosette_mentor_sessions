@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_practice/core/api/api_client.dart';
+import 'package:test_practice/di/get_it.dart';
 import 'package:test_practice/presentation/cubits/comments_cubit/comments_cubit.dart';
 
 @RoutePage()
@@ -67,7 +68,7 @@ class CommentsScreen extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
-      create: (context) => CommentsCubit(context.read<ApiClient>()),
+      create: (context) => getIt<CommentsCubit>(),
       child: this,
     );
   }

@@ -1,11 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../core/api/api_client.dart';
 import '../../../data/models/user_comment.dart';
 
 part 'comments_state.dart';
 
+@injectable
 class CommentsCubit extends Cubit<CommentsState> {
   final ApiClient _apiClient;
 
