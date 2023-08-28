@@ -5,11 +5,16 @@ import 'package:injectable/injectable.dart';
 class ApiClient {
   final Dio _dio;
 
-  ApiClient({required Dio dio}) : _dio = dio;
+  ApiClient(this._dio) {
+    _dio.interceptors.add(LogInterceptor());
+  }
 
-  Future<dynamic> get(String path) async {
+  Future<dynamic> get(String path, {Map<String, dynamic>? queryParams}) async {
     try {
-      final response = await _dio.get(path);
+      final response = await _dio.get(
+        path,
+        queryParameters: queryParams,
+      );
       return response.data;
     } on DioException {
       rethrow;

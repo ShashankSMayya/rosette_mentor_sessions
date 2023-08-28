@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_practice/core/api/api_client.dart';
 import 'package:test_practice/core/api/api_constants.dart';
+import 'package:test_practice/di/get_it.config.dart';
+import 'package:test_practice/di/get_it.dart';
 import 'package:test_practice/presentation/cubits/auth/auth_cubit.dart';
 import 'package:test_practice/presentation/routes/app_router.dart';
 
-void main() {
+void main() async{
+   getIt.init();
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatefulWidget {

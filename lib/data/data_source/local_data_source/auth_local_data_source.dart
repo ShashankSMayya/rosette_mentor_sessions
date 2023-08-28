@@ -1,3 +1,5 @@
+import 'package:injectable/injectable.dart';
+
 import '../../models/user.dart';
 
 abstract class AuthLocalDataSource {
@@ -9,6 +11,7 @@ abstract class AuthLocalDataSource {
   Future<void> deleteUser();
 }
 
+@LazySingleton(as: AuthLocalDataSource)
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   @override
   Future<void> cacheUser(User user) {

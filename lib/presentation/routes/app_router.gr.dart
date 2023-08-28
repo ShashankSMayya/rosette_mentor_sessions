@@ -31,10 +31,22 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    MovieRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const MovieScreen()),
+      );
+    },
     OnboardingRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const OnboardingScreen(),
+      );
+    },
+    WavyTestRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const WavyTestScreen(),
       );
     },
   };
@@ -92,6 +104,20 @@ class LoginRouteArgs {
 }
 
 /// generated route for
+/// [MovieScreen]
+class MovieRoute extends PageRouteInfo<void> {
+  const MovieRoute({List<PageRouteInfo>? children})
+      : super(
+          MovieRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MovieRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [OnboardingScreen]
 class OnboardingRoute extends PageRouteInfo<void> {
   const OnboardingRoute({List<PageRouteInfo>? children})
@@ -101,6 +127,20 @@ class OnboardingRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OnboardingRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WavyTestScreen]
+class WavyTestRoute extends PageRouteInfo<void> {
+  const WavyTestRoute({List<PageRouteInfo>? children})
+      : super(
+          WavyTestRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WavyTestRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
