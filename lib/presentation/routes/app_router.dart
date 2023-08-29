@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 
 import '../pages/comments_screen.dart';
 import '../pages/login/login_screen.dart';
@@ -10,6 +11,7 @@ import '../pages/wavy_test_screen.dart';
 part 'app_router.gr.dart';
 
 @AutoRouterConfig()
+@LazySingleton()
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [

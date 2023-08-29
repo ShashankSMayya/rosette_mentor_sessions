@@ -6,7 +6,9 @@ class ApiClient {
   final Dio _dio;
 
   ApiClient(this._dio) {
-    _dio.interceptors.add(LogInterceptor());
+    _dio.interceptors.addAll([
+      LogInterceptor(),
+    ]);
   }
 
   Future<dynamic> get(String path, {Map<String, dynamic>? queryParams}) async {

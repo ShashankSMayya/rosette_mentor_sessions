@@ -25,10 +25,10 @@ class MovieLoaded extends MovieState {
 }
 
 class MovieError extends MovieState {
-  final String message;
+  final AppError error;
 
-  const MovieError(this.message);
+  const MovieError(this.error);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [error];
 }

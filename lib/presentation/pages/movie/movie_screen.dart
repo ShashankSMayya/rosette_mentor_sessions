@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_practice/presentation/cubits/movie_cubit/movie_cubit.dart';
 import 'package:test_practice/presentation/cubits/movie_filter_cubit/movie_filter_cubit.dart';
+import 'package:test_practice/presentation/pages/movie/widgets/movie_list.dart';
+import 'package:test_practice/presentation/widgets/custom_error_widget.dart';
 
 import '../../../di/get_it.dart';
 
@@ -36,12 +38,10 @@ class MovieScreen extends StatefulWidget implements AutoRouteWrapper {
 class _MovieScreenState extends State<MovieScreen> {
   Timer? _debounce;
 
-
   @override
   void dispose() {
     _debounce?.cancel();
     super.dispose();
-
   }
 
   @override
@@ -67,44 +67,21 @@ class _MovieScreenState extends State<MovieScreen> {
                   }
                   if (state is MovieLoaded) {
                     final movies = state.movieResults.results;
-                    return ListView.separated(
-                        itemCount: movies.length,
-                        itemBuilder: (context, index) {
-                          final movie = movies[index];
-                          return Card(
-                            child: ListTile(
-                              contentPadding: const EdgeInsets.all(8),
-                              subtitle: Text(
-                                movie.overview ?? '-',
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              leading: movie.posterPath != null
-                                  ? CachedNetworkImage(
-                                      height: 100,
-                                      width: 80,
-                                      imageUrl:
-                                          'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                                    )
-                                  : Container(
-                                      height: 100,
-                                      width: 80,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                              title: Text(
-                                movie.title,
-                              ),
-                            ),
-                          );
-                        },
-                        separatorBuilder: (context, index) => const SizedBox(
-                              height: 8,
-                            ));
+                    return MovieListWidget(movies: movies);
                   }
                   if (state is MovieError) {
-                    return Center(child: Text(state.message));
+                    return Center(
+                      child: CustomErrorWidget(
+                        error: state.error,
+                        onPressed: () {
+                          context.read<MovieCubit>().getMovies(
+                              params: context
+                                  .read<MovieFilterCubit>()
+                                  .state
+                                  .params);
+                        },
+                      ),
+                    );
                   }
                   return const SizedBox.shrink();
                 },

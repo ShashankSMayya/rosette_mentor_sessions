@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import 'package:test_practice/domain/entities/app_error.dart';
 import 'package:test_practice/domain/entities/params/get_movies_params.dart';
 
 import '../../../data/models/movie_results.dart';
@@ -18,7 +19,7 @@ class MovieCubit extends Cubit<MovieState> {
     emit(MovieLoading());
     final res = await _movieRepository.getMovies(params.toJson());
     emit(res.fold(
-      (l) => MovieError(l.errorMessage),
+      (l) => MovieError(l),
       (r) => MovieLoaded(r),
     ));
   }

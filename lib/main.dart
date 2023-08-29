@@ -34,6 +34,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp.router(
         routerConfig: _appRouter.config(),
+        theme: ThemeData(useMaterial3: true),
       ),
     );
   }

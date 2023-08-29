@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 class AppError {
   final AppErrorType type;
   late String errorMessage;
@@ -27,5 +30,19 @@ enum AppErrorType {
   network,
   api,
   timeout,
+
   unknown;
+
+  IconData get icon {
+    switch (this) {
+      case AppErrorType.network:
+        return CupertinoIcons.wifi_slash;
+      case AppErrorType.api:
+        return Icons.api;
+      case AppErrorType.timeout:
+        return Icons.timer;
+      case AppErrorType.unknown:
+        return Icons.error;
+    }
+  }
 }
